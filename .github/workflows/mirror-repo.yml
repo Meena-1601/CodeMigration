@@ -1,19 +1,34 @@
-name: Migrate Repos
+name: Migrate Repositories
 
 on:
   workflow_dispatch:
+    inputs:
+      source_pat:
+        description: "Source GitHub PAT"
+        required: true
+      dest_pat:
+        description: "Destination GitHub PAT"
+        required: true
+      source_user:
+        description: "Source GitHub Username"
+        required: true
+      dest_user:
+        description: "Destination GitHub Username"
+        required: true
 
 jobs:
   migrate:
     runs-on: ubuntu-latest
-     
+
     steps:
       - uses: actions/checkout@v4
-      - run: chmod +x scripts/migrate-repos.sh
+
       - name: Execute Shell Script
         env:
-          SOURCE_GITHUB_USERNAME: ${{ secrets.SOURCE_PAT_USER }}
-          SOURCE_GITHUB_PAT: ${{ secrets.SOURCE_PAT_TOKEN }}
-          DEST_GITHUB_USERNAME: ${{ secrets.DEST_PAT_USER }}
-          DEST_GITHUB_PAT: ${{ secrets.DEST_PAT_TOKEN }}
-        run: bash scripts/migrate-repos.sh
+          SOURCE_PAT_TOKEN: ${{ github.event.inputs.source_pat }}
+          DEST_PAT_TOKEN: ${{ github.event.inputs.dest_pat }}
+          SOURCE_PAT_USER: ${{ github.event.inputs.source_user }}
+          DEST_PAT_USER: ${{ github.event.inputs.dest_user }}
+        run: |
+          chmod +x scripts/migrate-repos.sh
+          bash scripts/migrate-repos.sh
