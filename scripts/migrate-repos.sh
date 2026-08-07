@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SOURCE_BASE="https://github.com/Meena-1601"
-TARGET_BASE="https://github.com/meenasubashri1998-code"
+SOURCE_BASE="https://${SOURCE_PAT_USER}:${SOURCE_PAT_TOKEN}@github.com/Meena-1601"
+TARGET_BASE="https://${DEST_PAT_USER}:${DEST_PAT_TOKEN}@github.com/meenasubashri1998-code"
 
 repos=(
   python-app-deploy
