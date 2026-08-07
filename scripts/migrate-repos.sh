@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-SOURCE_BASE="https://github.com/Meena-1601"
-TARGET_BASE="https://github.com/meenasubashri1998-code"
+SOURCE_BASE="https://${SOURCE_GITHUB_USERNAME}:${SOURCE_GITUB_PAT}@github.com/Meena-1601"
+TARGET_BASE="https://${DEST_GITHUB_USERNAME}:${DEST_GITUB_PAT}@github.com/meenasubashri1998-code"
 
 repos=(
   python-app-deploy
