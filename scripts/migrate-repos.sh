@@ -15,7 +15,9 @@ do
   git clone --mirror "$SOURCE_BASE/${repo}.git"
 
   cd "${repo}.git"
-
+  
+  git for-each-ref --format='%(refname)' refs/pull | xargs -r -n 1 git update-ref -d
+  
   git remote set-url origin "$TARGET_BASE/${repo}.git"
 
   git push --mirror
