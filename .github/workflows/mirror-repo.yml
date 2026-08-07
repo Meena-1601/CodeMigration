@@ -9,10 +9,11 @@ jobs:
      
     steps:
       - uses: actions/checkout@v4
-      - run: bash scripts/migrate-repos.sh
+      - run: chmod +x scripts/migrate-repo.sh
       - name: Execute Shell Script
         env:
           SOURCE_GITHUB_USERNAME: ${{ secrets.SOURCE_GITHUB_USERNAME }}
           SOURCE_GITHUB_PAT: ${{ secrets.SOURCE_GITHUB_PAT }}
           DEST_GITHUB_USERNAME: ${{ secrets.DEST_GITHUB_USERNAME }}
           DEST_GITHUB_PAT: ${{ secrets.DEST_GITHUB_PAT }}
+      - run: bash scripts/migrate-repos.sh
