@@ -5,9 +5,6 @@ SOURCE_BASE="https://github.com/Meena-1601"
 TARGET_BASE="https://github.com/meenasubashri1998-code"
 
 repos=(
-  python-app-deploy
-  aws_resource_list.sh
-  Jenkins-pipeline
   git-pjt
 )
 
