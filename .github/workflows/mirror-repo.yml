@@ -11,9 +11,7 @@ jobs:
       SOURCE_PAT_TOKEN: ${{ secrets.SOURCE_PAT_TOKEN }}
       DEST_PAT_USER: ${{ secrets.DEST_PAT_USER }}
       DEST_PAT_TOKEN: ${{ secrets.DEST_PAT_TOKEN }}
-    - name: Configure Git Authentication
-        run: |
-          git config --global url."https://Meena-1601:${{secrets.SOURCE_PAT_TOKEN}}@github.com/".insteadOf "https://github.com/"  
+     
     steps:
       - uses: actions/checkout@v4
       - run: bash scripts/migrate-repos.sh
