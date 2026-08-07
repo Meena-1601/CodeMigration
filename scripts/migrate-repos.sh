@@ -16,8 +16,7 @@ do
   echo "Migrating ${repo} ..."
 
   # Clone from source using extraheader auth (avoids URL-embedded token issues)
-  git -c http.extraheader="Authorization: token ${SOURCE_PAT_TOKEN}" \
-    clone --mirror "https://github.com/${SOURCE_OWNER}/${repo}.git" "${repo}.git"
+  git clone --mirror "https://github.com/${SOURCE_OWNER}/${repo}.git" "${repo}.git"
 
   cd "${repo}.git"
 
