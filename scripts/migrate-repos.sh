@@ -1,10 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-SOURCE_BASE="https://github.com/Meena-1601"
-TARGET_BASE="https://${DEST_PAT_USER}:${DEST_PAT_TOKEN}@github.com/meenasubashri1998-code"
-
-echo "DEBUG: SOURCE_PAT_USER length: ${#SOURCE_PAT_USER}"
+SOURCE_OWNER="Meena-1601"
+DEST_OWNER="meenasubashri1998-code"
 
 repos=(
   python-app-deploy
@@ -17,13 +15,15 @@ for repo in "${repos[@]}"
 do
   echo "Migrating ${repo} ..."
 
-  git clone --mirror "$SOURCE_BASE/${repo}.git"
+  # Clone from source using extraheader auth (avoids URL-embedded token issues)
+  git -c http.extraheader="Authorization: token ${SOURCE_PAT_TOKEN}" \
+    clone --mirror "https://github.com/${SOURCE_OWNER}/${repo}.git" "${repo}.git"
 
   cd "${repo}.git"
 
-  git remote set-url origin "$TARGET_BASE/${repo}.git"
-
-  git push --mirror
+  # Push to destination using extraheader auth
+  git -c http.extraheader="Authorization: token ${DEST_PAT_TOKEN}" \
+    push --mirror "https://github.com/${DEST_OWNER}/${repo}.git"
 
   cd ..
   rm -rf "${repo}.git"
