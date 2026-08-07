@@ -16,4 +16,4 @@ jobs:
           SOURCE_GITHUB_PAT: ${{ secrets.SOURCE_GITHUB_PAT }}
           DEST_GITHUB_USERNAME: ${{ secrets.DEST_GITHUB_USERNAME }}
           DEST_GITHUB_PAT: ${{ secrets.DEST_GITHUB_PAT }}
-      - run: bash scripts/migrate-repos.sh
+        run: bash scripts/migrate-repos.sh
