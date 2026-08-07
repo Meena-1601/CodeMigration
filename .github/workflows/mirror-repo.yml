@@ -12,8 +12,8 @@ jobs:
       - run: chmod +x scripts/migrate-repos.sh
       - name: Execute Shell Script
         env:
-          SOURCE_GITHUB_USERNAME: ${{ secrets.SOURCE_GITHUB_USERNAME }}
-          SOURCE_GITHUB_PAT: ${{ secrets.SOURCE_GITHUB_PAT }}
-          DEST_GITHUB_USERNAME: ${{ secrets.DEST_GITHUB_USERNAME }}
-          DEST_GITHUB_PAT: ${{ secrets.DEST_GITHUB_PAT }}
+          SOURCE_GITHUB_USERNAME: ${{ secrets.SOURCE_PAT_USER }}
+          SOURCE_GITHUB_PAT: ${{ secrets.SOURCE_PAT_TOKEN }}
+          DEST_GITHUB_USERNAME: ${{ secrets.DEST_PAT_USER }}
+          DEST_GITHUB_PAT: ${{ secrets.DEST_PAT_TOKEN }}
         run: bash scripts/migrate-repos.sh
