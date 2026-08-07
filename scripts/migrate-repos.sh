@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-SOURCE_BASE="https://github.com/Meena-1601"
-TARGET_BASE="https://github.com/meenasubashri1998-code"
+SOURCE_BASE="https://${{ secrets.SOURCE_PAT_USER }}:${{ secrets.SOURCE_PAT_TOKEN }}@github.com/Meena-1601"
+TARGET_BASE="https://${{ secrets.DEST_PAT_USER }}: ${{ secrets.DEST_PAT_TOKEN }}@github.com/meenasubashri1998-code"
 
 repos=(
   git-pjt
